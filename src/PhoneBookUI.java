@@ -97,28 +97,37 @@ public class PhoneBookUI {
     public static void viewOneEntry() {
 
         Scanner userInput = new Scanner(System.in);
-        String entrySelect;
+        String entryFName;
+        String entryLName;
         boolean nameFlag = false;
         boolean menuFlag = true;
         //  EntryNode entry = new EntryNode;
 
         do {
-            System.out.print("Please enter the name of the entry you would like to see or type \"q\" to quit: ");
-            entrySelect = userInput.nextLine();
+            System.out.print("Please enter the first name of the entry you would like to see or type \"q\" to quit: ");
+            entryFName = userInput.nextLine();
 
             //  SIDE NOTE: CURRENT ITERATION OF CODE DOES NOT REALLY ALLOW FOR FIRST NAMES THAT START WITH Q, FIX THIS LATER
-            //  first, checks if user types q, if so, turn boolean to false that skips right to ending the previous menu
+            //  first, checks if user types 'q' for the first name, if so, turn boolean to false that skips right to ending the previous menu
             //  if the user types anything that is not 'q', check if name exists in linkedlist, if not, ask user again
+            //  secondly, prompts and checks if user types 'q' for last name, if so, turn boolean to false that skips right to ending the previous menu
+            //  thirdly, call a method in manager class that checks if an object exists with a matching first name and matching last name
             //  if user exists, print information to user.
-            if (entrySelect.toLowerCase().charAt(0) == 'q') {
+            if (entryFName.toLowerCase().charAt(0) == 'q') {
                 menuFlag = false;
             } else {
-                // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
-                if (nameFlag == false) {
-                    System.out.println("That user does not exist, please try again or type \"q\' to quit\n\n");
+                System.out.print("Please enter the last name of the entry you would like to see or type \"q\": ");
+                entryLName = userInput.nextLine();
+                if (entryLName.toLowerCase().charAt(0) == 'q') {
+                    menuFlag = false;
                 } else {
-                    //  entry = {Method that takes in entry name and returns an object}
-                    //  System.out.println(entry); {prints out data in entry object by implicitly calling custom made toString method}
+                // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
+                    if (nameFlag == false) {
+                        System.out.println("That user does not exist, please try again\n\n");
+                    } else {
+                        //  entry = {Method that takes in entry name and returns an object}
+                        //  System.out.println(entry); {prints out data in entry object by implicitly calling custom made toString method}
+                    }
                 }
             }
         } while (menuFlag);
@@ -132,8 +141,11 @@ public class PhoneBookUI {
     public static void removeOneEntry() {
 
         Scanner userInput = new Scanner(System.in);
+        String entryFName;
 
-        System.out.print("Please enter the name of the entry you would like to remove or type \"q\" to quit: ");
+        System.out.print("Please enter the first name of the entry you would like to remove or type \"q\" to quit: ");
+
+
     } //  end of removeOneEntry method
 
     //  Prints ASCIIArt in main menu
