@@ -1,9 +1,8 @@
 //  ASCII art created from https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=
 /*
- *  Create viewAllEntries method
- *  Create viewOneEntry method
  *  Create addNewEntry method
  *  Create removeOneEntry method
+ *  Fix up Create viewOneEntry method 
  *  Add comments where need be
 */
 
@@ -96,7 +95,34 @@ public class PhoneBookUI {
     } //  end of viewAllEntries method
 
     public static void viewOneEntry() {
-        System.out.println("viewOneEntry");
+
+        Scanner userInput = new Scanner(System.in);
+        String entrySelect;
+        boolean nameFlag = false;
+        boolean menuFlag = true;
+        //  EntryNode entry = new EntryNode;
+
+        do {
+            System.out.print("Please enter the name of the entry you would like to see or type \"q\" to quit: ");
+            entrySelect = userInput.nextLine();
+
+            //  SIDE NOTE: CURRENT ITERATION OF CODE DOES NOT REALLY ALLOW FOR FIRST NAMES THAT START WITH Q, FIX THIS LATER
+            //  first, checks if user types q, if so, turn boolean to false that skips right to ending the previous menu
+            //  if the user types anything that is not 'q', check if name exists in linkedlist, if not, ask user again
+            //  if user exists, print information to user.
+            if (entrySelect.toLowerCase().charAt(0) == 'q') {
+                menuFlag = false;
+            } else {
+                // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
+                if (nameFlag == false) {
+                    System.out.println("That user does not exist, please try again or type \"q\' to quit\n\n");
+                } else {
+                    //  entry = {Method that takes in entry name and returns an object}
+                    //  System.out.println(entry); {prints out data in entry object by implicitly calling custom made toString method}
+                }
+            }
+        } while (menuFlag);
+
     } //  end of viewOneEntry method
 
     public static void addNewEntry() {
@@ -104,7 +130,10 @@ public class PhoneBookUI {
     } //  end of addNewEntry method
 
     public static void removeOneEntry() {
-        System.out.println("removeOneEntry");
+
+        Scanner userInput = new Scanner(System.in);
+
+        System.out.print("Please enter the name of the entry you would like to remove or type \"q\" to quit: ");
     } //  end of removeOneEntry method
 
     //  Prints ASCIIArt in main menu
