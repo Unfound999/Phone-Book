@@ -1,6 +1,5 @@
 //  ASCII art created from https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=
 /*
- *  Create addNewEntry method
  *  Fix up Create viewOneEntry method 
  *  Add comments where need be
 */
@@ -57,21 +56,23 @@ public class PhoneBookUI {
 
         Scanner userInput = new Scanner(System.in);
         String menuInput;
+        String entryNames = "Adam Sandler Mary Johnsons Micheal Williams Patricia Brown Robert Jones Jennifer Garcia";
         boolean menuFlag = true;
         char menuOption;
 
-        // {Call method from Manager class here to get String of data, using a while loop, hasNext, and next to print each name one by one}
-        // The following is just a hardcoded version of what UI would look like. This bit of code is temporary
-        System.out.println("\n\n***********************************************************************************\n" +
-                        "All Entries:\n" +
-                        "Adam Sandler\n" +
-                        "Mary Johnsons\n" +
-                        "Micheal Williams\n" +
-                        "Patricia Brown\n" +
-                        "Robert Jones\n" +
-                        "Jennifer Garcia\n");
+        // entryNames = {Call method from Manager class here to get String of data, using a while loop, hasNext, and next to print each name one by one}
+        Scanner names = new Scanner(entryNames);
 
-        System.out.println("If you would like to view a specific entry type \"v\" or to go back to the main menu, type \"q\"");
+        // The following is just a hardcoded version of what UI would look like. This bit of code is temporary
+        System.out.println("\n\n***********************************************************************************");
+        System.out.println("All entries: ");
+
+        while (names.hasNext()) {
+            System.out.print(names.next() + " ");
+            System.out.println(names.next());
+        }
+
+        System.out.println("\nIf you would like to view a specific entry type \"v\" or to go back to the main menu, type \"q\"");
         menuInput = userInput.next();
         menuOption = menuInput.toLowerCase().charAt(0);
 
