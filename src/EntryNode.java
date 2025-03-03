@@ -93,7 +93,7 @@ public class EntryNode {
      * String Method
      * Returns last name of the contact.
      */
-    public String getlName() {
+    public String getLName() {
         return lName;
     }
 
@@ -104,7 +104,7 @@ public class EntryNode {
      * Parameters:
      * lName (string) new value for their last name.
      */
-    public void setlName(String lName) {
+    public void setLName(String lName) {
         this.lName = lName;
     }
 
@@ -183,4 +183,11 @@ public class EntryNode {
         this.email = email;
     }
 
+    /*
+     * String Method
+     * Returns a string representation of the current object.
+     */
+    public String toString(){
+        return String.format("Name: %s %s, Email: %s, Phone: %s, Address: %s, Zip: %d", fName, lName, email, phoneNumber, address, zipCode);
+    }
 }
