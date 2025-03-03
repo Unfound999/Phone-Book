@@ -105,21 +105,15 @@ public class PhoneBookUI {
         //  EntryNode entry = new EntryNode;
 
         do {
-            System.out.print("Please enter the first name of the entry you would like to see or type \"q\" to quit: ");
+            System.out.print("Please enter the first name of the entry you would like to see or type \"quit\" to quit: ");
             entryFName = userInput.next();
 
-            //  SIDE NOTE: CURRENT ITERATION OF CODE DOES NOT REALLY ALLOW FOR FIRST NAMES THAT START WITH Q, FIX THIS LATER
-            //  first, checks if user types 'q' for the first name, if so, turn boolean to false that skips right to ending the previous menu
-            //  if the user types anything that is not 'q', check if name exists in linkedlist, if not, ask user again
-            //  secondly, prompts and checks if user types 'q' for last name, if so, turn boolean to false that skips right to ending the previous menu
-            //  thirdly, call a method in manager class that checks if an object exists with a matching first name and matching last name
-            //  if user exists, print information to user.
-            if (entryFName.toLowerCase().charAt(0) == 'q') {
+            if (entryFName.toLowerCase().matches("quit")) {
                 menuFlag = false;
             } else {
-                System.out.print("Please enter the last name of the entry you would like to see or type \"q\": ");
+                System.out.print("Please enter the last name of the entry you would like to see or type \"quit\": ");
                 entryLName = userInput.next();
-                if (entryLName.toLowerCase().charAt(0) == 'q') {
+                if (entryLName.toLowerCase().matches("quit")) {
                     menuFlag = false;
                 } else {
                     // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
@@ -177,15 +171,15 @@ public class PhoneBookUI {
         boolean menuFlag = true;
 
         do {
-            System.out.print("Please enter the first name of the entry you would like to remove or type \"q\" to quit: ");
+            System.out.print("Please enter the first name of the entry you would like to remove or type \"quit\" to quit: ");
             entryFName = userInput.next();
 
-            if (entryFName.toLowerCase().charAt(0) == 'q') {
+            if (entryFName.toLowerCase().matches("quit")) {
                 menuFlag = false;
             } else {
-                System.out.print("Please enter the last name of the entry you would like to remove or type \"q\": ");
+                System.out.print("Please enter the last name of the entry you would like to remove or type \"quit\": ");
                 entryLName = userInput.next();
-                if (entryLName.toLowerCase().charAt(0) == 'q') {
+                if (entryLName.toLowerCase().matches("quit")) {
                     menuFlag = false;
                 } else {
                     // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
