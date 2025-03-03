@@ -1,7 +1,6 @@
 //  ASCII art created from https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=
 /*
  *  Create addNewEntry method
- *  Create removeOneEntry method
  *  Fix up Create viewOneEntry method 
  *  Add comments where need be
 */
@@ -79,17 +78,18 @@ public class PhoneBookUI {
         do { 
             switch (menuOption) {
                 case('v'):
-                viewOneEntry();
-                menuFlag = false;
+                    viewOneEntry();
+                    menuFlag = false;
+                    break;
                 case('q'):
-                System.out.println("\n\n\n\n\n");
-                menuFlag = false;
-                break;
+                    System.out.println("\n\n\n\n\n");
+                    menuFlag = false;
+                    break;
                 default:
-                System.out.println("Invalid input, please try again");
-                menuInput = userInput.next();
-                menuOption = menuInput.toLowerCase().charAt(0);
-                break;
+                    System.out.println("Invalid input, please try again");
+                    menuInput = userInput.next();
+                    menuOption = menuInput.toLowerCase().charAt(0);
+                    break;
             }
         } while (menuFlag);
     } //  end of viewAllEntries method
@@ -135,7 +135,36 @@ public class PhoneBookUI {
     } //  end of viewOneEntry method
 
     public static void addNewEntry() {
-        System.out.println("addNewEntry");
+
+        Scanner userInput = new Scanner(System.in);
+        String entryFName;
+        String entryLName;
+        String address;
+        String phoneNum;
+        String zipCode;
+        String email;
+
+        System.out.print("Please enter the entry's first name: ");
+        entryFName = userInput.next();
+        
+        System.out.print("Please enter the entry's last name: ");
+        entryLName = userInput.next();
+
+        System.out.print("Please enter the entry's address [street city state]: ");
+        address = userInput.next();
+
+        System.out.print("Please enter the entry's phone number: ");
+        phoneNum = userInput.next();
+
+        System.out.print("Please enter the entry's zipcode: ");
+        zipCode = userInput.next();
+
+        System.out.print("Please enter the entry's email address: ");
+        email = userInput.next();
+
+        //  {passes needed data to called method from manager class}
+
+        System.out.println("User created successfully");
     } //  end of addNewEntry method
 
     public static void removeOneEntry() {
