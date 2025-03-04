@@ -64,7 +64,7 @@ public class PhoneBookUI {
         Scanner names = new Scanner(entryNames);
 
         // The following is just a hardcoded version of what UI would look like. This bit of code is temporary
-        System.out.println("\n\n***********************************************************************************");
+        printLine();
         System.out.println("All entries: ");
 
         while (names.hasNext()) {
@@ -83,7 +83,7 @@ public class PhoneBookUI {
                     menuFlag = false;
                     break;
                 case('q'):
-                    System.out.println("\n\n\n\n\n");
+                    System.out.println("\n\n");
                     menuFlag = false;
                     break;
                 default:
@@ -104,6 +104,8 @@ public class PhoneBookUI {
         boolean nameFlag = false;
         boolean menuFlag = true;
         //  EntryNode entry = new EntryNode;
+
+        printLine();
 
         do {
             System.out.print("Please enter the first name of the entry you would like to see or type \"quit\" to quit: ");
@@ -136,6 +138,7 @@ public class PhoneBookUI {
                 }
             }
         } while (menuFlag);
+        System.out.println("\n\n");
     } //  end of viewOneEntry method
 
     public static void addNewEntry() {
@@ -143,6 +146,8 @@ public class PhoneBookUI {
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
         boolean nameFlag = false;
+
+        printLine();
 
         System.out.print("Please enter the entry's first name: ");
         String entryFName = userInput.next();
@@ -170,6 +175,8 @@ public class PhoneBookUI {
             //  {passes needed data to called method from manager class}
             System.out.println("User successfully created");
         }
+
+        System.out.println("\n\n");
     } //  end of addNewEntry method
 
     public static void removeOneEntry() {
@@ -180,6 +187,8 @@ public class PhoneBookUI {
         String phoneNumber;
         boolean nameFlag = false;
         boolean menuFlag = true;
+
+        printLine();
 
         do {
             System.out.print("Please enter the first name of the entry you would like to remove or type \"quit\" to quit: ");
@@ -210,6 +219,7 @@ public class PhoneBookUI {
                 }
             }
         } while (menuFlag);
+        System.out.println("\n\n");
     } //  end of removeOneEntry method
 
     //  Prints ASCIIArt in main menu
@@ -231,4 +241,8 @@ public class PhoneBookUI {
                         "        `--`  `----'                                '---\"             `----'                                    \r\n" + 
                         "                                                                                                                ");
     } //  end of ASCIIArt method
+
+    public static void printLine() {
+        System.out.println("\n\n***********************************************************************************");
+    } //  end of printLine method
 } //  end of PhoneBookUI class
