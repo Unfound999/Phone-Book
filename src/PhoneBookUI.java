@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class PhoneBookUI {
     public static void mainMenu() {
-
         Scanner userInput = new Scanner(System.in);
         String menuInput;
         boolean menuFlag = true;
@@ -28,32 +27,19 @@ public class PhoneBookUI {
 
             if (Character.toString(menuOption).matches("[evarq]")) {
                 switch(menuOption) {
-                    case('e'):
-                        viewAllEntries();
-                        break;
-                    case('v'):
-                        viewOneEntry();
-                        break;
-                    case('a'):
-                        addNewEntry();
-                        break;
-                    case('r'):
-                        removeOneEntry();
-                        break;
-                    case('q'):
-                        System.out.println("Program Ends");
-                        menuFlag = false;
-                        break;
+                    case('e'): viewAllEntries(); break;
+                    case('v'): viewOneEntry(); break;
+                    case('a'): addNewEntry(); break;
+                    case('r'): removeOneEntry(); break;
+                    case('q'): System.out.println("Program Ends"); menuFlag = false; break;
                 }
             } else {
                 System.out.println("Invalid input, please try again");
             }
         } while (menuFlag);
-
     } //  end of mainMenu method
 
     public static void viewAllEntries() {
-
         Scanner userInput = new Scanner(System.in);
         String menuInput;
         String entryNames = "Adam Sandler Mary Johnsons Micheal Williams Patricia Brown Robert Jones Jennifer Garcia";
@@ -78,14 +64,8 @@ public class PhoneBookUI {
 
         do { 
             switch (menuOption) {
-                case('v'):
-                    viewOneEntry();
-                    menuFlag = false;
-                    break;
-                case('q'):
-                    System.out.println("\n\n");
-                    menuFlag = false;
-                    break;
+                case('v'): viewOneEntry(); menuFlag = false; break;
+                case('q'): System.out.println("\n\n"); menuFlag = false; break;
                 default:
                     System.out.println("Invalid input, please try again");
                     menuInput = userInput.next();
@@ -96,11 +76,8 @@ public class PhoneBookUI {
     } //  end of viewAllEntries method
 
     public static void viewOneEntry() {
-
         Scanner userInput = new Scanner(System.in);
-        String entryFName;
-        String entryLName;
-        String phoneNum;
+        String entryFName, entryLName, phoneNum;
         boolean nameFlag = false;
         boolean menuFlag = true;
         //  EntryNode entry = new EntryNode;
@@ -142,7 +119,6 @@ public class PhoneBookUI {
     } //  end of viewOneEntry method
 
     public static void addNewEntry() {
-
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
         boolean nameFlag = false;
@@ -180,11 +156,8 @@ public class PhoneBookUI {
     } //  end of addNewEntry method
 
     public static void removeOneEntry() {
-
         Scanner userInput = new Scanner(System.in);
-        String entryFName;
-        String entryLName;
-        String phoneNumber;
+        String entryFName, entryLName, phoneNumber;
         boolean nameFlag = false;
         boolean menuFlag = true;
 
