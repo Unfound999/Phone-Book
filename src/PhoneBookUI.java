@@ -1,7 +1,7 @@
 //  ASCII art created from https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=
 /*
  *  Add interaction between test class and manager class 
- *  Add comments where need be
+ *  Add comments where need be & more proper code formatting
 */
 
 import java.util.Scanner;
@@ -136,38 +136,31 @@ public class PhoneBookUI {
                 }
             }
         } while (menuFlag);
-
     } //  end of viewOneEntry method
 
     public static void addNewEntry() {
 
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
-        String entryFName;
-        String entryLName;
-        String address;   
-        String phoneNum;
-        String zipCode;
-        String email;
         boolean nameFlag = false;
 
         System.out.print("Please enter the entry's first name: ");
-        entryFName = userInput.next();
+        String entryFName = userInput.next();
         
         System.out.print("Please enter the entry's last name: ");
-        entryLName = userInput.next();
+        String entryLName = userInput.next();
 
         System.out.print("Please enter the entry's address [street city state]: ");
-        address = addressInput.nextLine();
+        String address = addressInput.nextLine();
 
         System.out.print("Please enter the entry's phone number: ");
-        phoneNum = userInput.next();
+        String phoneNum = userInput.next();
 
         System.out.print("Please enter the entry's zipcode: ");
-        zipCode = userInput.next();
+        String zipCode = userInput.next();
 
         System.out.print("Please enter the entry's email address: ");
-        email = userInput.next();
+        String email = userInput.next();
 
         // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
 
