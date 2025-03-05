@@ -46,17 +46,15 @@ public class PhoneBookUI {
         boolean menuFlag = true;
         char menuOption;
 
-        // entryNames = {Call method from Manager class here to get String of data, using a while loop, hasNext, and next to print each name one by one}
+        entryNames = getAllNames();
         Scanner names = new Scanner(entryNames);
 
         printLine(); //  prints solid line for user readability
         System.out.println("All entries: ");
         
         //  grabs names and phonenumbers from String and prints them to user
-        // The following is just a hardcoded version of what UI would look like. This bit of code is temporary
         while (names.hasNext()) {
-            System.out.print(names.next() + " ");
-            System.out.println(names.next());
+            System.out.print(names.next() + " " + names.next() + " " + names.next());
         }
 
         //  prompts user and either runs methods or quits back to main menu based on user input
