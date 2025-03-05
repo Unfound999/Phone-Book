@@ -42,7 +42,7 @@ public class PhoneBookUI {
     public static void viewAllEntries() {
         Scanner userInput = new Scanner(System.in);
         String menuInput;
-        String entryNames = "Adam Sandler Mary Johnsons Micheal Williams Patricia Brown Robert Jones Jennifer Garcia";
+        String entryNames;
         boolean menuFlag = true;
         char menuOption;
 
@@ -153,7 +153,7 @@ public class PhoneBookUI {
         if (nameFlag) {
             System.out.println("User already exists");
         } else {
-            //  {passes needed data to called method from manager class}
+            addEntry(entryFName, entryLName, address, phoneNum, zipCode, email);
             System.out.println("User successfully created");
         }
 
@@ -194,7 +194,7 @@ public class PhoneBookUI {
                         if (entry == null) {
                             System.out.println("That user does not exist, please try again\n\n");
                         } else {
-                            //  {calls method from manager class that removes user from linkedlist}
+                            removeEntry(entryFName, entryLName, phoneNum);
                             System.out.println("User removed successfully");
                             menuFlag = false;
                         }
