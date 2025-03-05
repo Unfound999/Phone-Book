@@ -1,3 +1,5 @@
+
+
 public class PhoneBookManager {
 
     private EntryNode firstNode;
@@ -19,16 +21,68 @@ public class PhoneBookManager {
     public void addEntry(String fNAme, String lName, String address, String phNum, int zip, String email, int index) {
 
         EntryNode currNode = firstNode;
+
         while(currNode.getNextEntry() !=  null) {
 
+            if(currNode.getIndex() > index) {
+
+                currNode.setIndex(currNode.getIndex() + 1);
+            }
+
+            if(index == currNode.getNextEntry().getIndex()) {
+                
+                EntryNode newEntryNode = new EntryNode(this.length++, fNAme, lName, address, phNum, zip, email);
+                newEntryNode.setNextEntry(currNode.getNextEntry());
+                currNode.setNextEntry(newEntryNode);
+                currNode = newEntryNode;
+            }
+
+            
             currNode = currNode.getNextEntry();
         }
+    }
 
-        EntryNode newEntryNode = new EntryNode(this.length++, fNAme, lName, address, phNum, zip, email);
-        currNode.setNextEntry(newEntryNode);
+    public EntryNode getEntry(String fName, String lName, String pNumber) {
 
-        //remove code
+        EntryNode currNode = firstNode;
 
+        String currFName = currNode.getfName();
+        String currLName = currNode.getlName();
+        String currPNumber = currNode.getPhoneNumber();
+
+        if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
+            return firstNode;
+        }
+
+        currNode = currNode.getNextEntry();
+
+        while(currNode.getNextEntry() !=  null) {
+            currFName = currNode.getNextEntry().getfName();
+            currLName = currNode.getNextEntry().getlName();
+            currPNumber = currNode.getNextEntry().getPhoneNumber();
+
+            if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
+                return currNode.getNextEntry();
+            }
+            currNode = currNode.getNextEntry();
+        }
+        return null;
+    }
+
+    public String getAllNames() {
+
+        EntryNode currNode = firstNode;
+        String longList = "";
+
+        while(currNode !=  null) {
+            String currFName = currNode.getfName();
+            String currLName = currNode.getlName();
+            String currPNumber = currNode.getPhoneNumber();
+
+            longList = longList + currFName + " " + currLName + " " + currPNumber + " ";
+            currNode = currNode.getNextEntry();
+        }
+        return longList;
     }
 
     public void remove(String fName, String lName, String pNumber) {
@@ -44,7 +98,7 @@ public class PhoneBookManager {
         }
 
         currNode = currNode.getNextEntry();
-        
+
         while(currNode.getNextEntry() !=  null) {
             currFName = currNode.getNextEntry().getfName();
             currLName = currNode.getNextEntry().getlName();
