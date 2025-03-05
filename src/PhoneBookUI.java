@@ -7,9 +7,8 @@ public class PhoneBookUI {
 
     PhoneBookManager manager;
 
-   // public PhoneBookUI() {
-   //     this.manager = new PhoneBookManager();
-   // }
+   public PhoneBookUI() {
+   }
 
     //  Prompts user with main menu and runs methods based on user input
     public void mainMenu() {
@@ -54,6 +53,11 @@ public class PhoneBookUI {
         boolean menuFlag = true;
         char menuOption;
 
+        if(this.manager == null){
+            System.out.println("Please add a contact first!");
+            return;
+        }
+
         entryNames = manager.getAllNames();
         Scanner names = new Scanner(entryNames);
 
@@ -90,6 +94,11 @@ public class PhoneBookUI {
         String entryFName, entryLName, phoneNum;
         boolean menuFlag = true;
         EntryNode entry;
+
+        if(this.manager == null){
+            System.out.println("Please add a contact first!");
+            return;
+        }
 
         printLine(); // prints solid line for user readability
 
@@ -192,6 +201,11 @@ public class PhoneBookUI {
         boolean nameFlag = false;
         boolean menuFlag = true;
         EntryNode entry;
+
+        if(this.manager == null){
+            System.out.println("Please add a contact first!");
+            return;
+        }
 
         printLine(); //  prints a solid line for user readability
 
