@@ -50,6 +50,10 @@ public class PhoneBookManager {
 
         EntryNode currNode = firstNode;
 
+        if(currNode == null){
+            return null;
+        }
+
         String currFName = currNode.getFName();
         String currLName = currNode.getLName();
         String currPNumber = currNode.getPhoneNumber();
@@ -109,7 +113,9 @@ public class PhoneBookManager {
 
         if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
             firstNode = currNode.getNextEntry();
+            return;
         }
+
 
         currNode = currNode.getNextEntry();
 
@@ -165,5 +171,6 @@ public class PhoneBookManager {
         PhoneBookManager x = new PhoneBookManager("Bob", "Fred", "null", "null", 0, "null");
         x.addEntry("Anna", "Frank", "null", "null", 0, "null");
         x.addEntry("Zedger", "Smith", "", "", 0, "");
+        x.sortByFName();
     }
 }
