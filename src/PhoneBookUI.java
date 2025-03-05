@@ -84,7 +84,7 @@ public class PhoneBookUI {
         String entryFName, entryLName, phoneNum;
         boolean nameFlag = false;
         boolean menuFlag = true;
-        EntryNode entry = new EntryNode();
+        EntryNode entry;
 
         printLine(); // prints solid line for user readability
 
@@ -127,7 +127,7 @@ public class PhoneBookUI {
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
         boolean nameFlag = false;
-        EntryNode entry = new EntryNode();
+        EntryNode entry;
 
         printLine(); //  prints solid line for user readability
 
@@ -168,7 +168,7 @@ public class PhoneBookUI {
         String entryFName, entryLName, phoneNum;
         boolean nameFlag = false;
         boolean menuFlag = true;
-        EntryNode entry = new EntryNode();
+        EntryNode entry;
 
         printLine(); //  prints a solid line for user readability
 
