@@ -148,18 +148,19 @@ public class PhoneBookManager {
             return; // Only one entry, always sorted by that virtue.
         }
 
-        while(currNode != null){
+        while(currNode != null && currNode.getNextEntry() != null){
             char currFNameChar = currNode.getFName().toUpperCase().charAt(0);
             char nextFNameChar = currNode.getNextEntry().getFName().charAt(0);
             if(charMap.indexOf(currFNameChar) > charMap.indexOf(nextFNameChar)){
                 if(prevNode == null){
                     // We must be at the first node.
                     EntryNode nextNode = currNode.getNextEntry();
+                    currNode.setNextEntry(nextNode.getNextEntry());
                     nextNode.setNextEntry(currNode);
                     firstNode = nextNode;
                 } else {
-                    prevNode.setNextEntry(currNode.getNextEntry());
                     currNode.getNextEntry().setNextEntry(currNode);
+                    prevNode.setNextEntry(currNode.getNextEntry());
                 }
             }
             prevNode = currNode;
@@ -170,7 +171,12 @@ public class PhoneBookManager {
     public static void main(String[] args) {
         PhoneBookManager x = new PhoneBookManager("Bob", "Fred", "null", "null", 0, "null");
         x.addEntry("Anna", "Frank", "null", "null", 0, "null");
+        x.addEntry("Dilan", "Oglander", "Test", "25032152134", 25, "email@email.com");
+        x.addEntry("Filan", "Oglander", "Test", "25032152134", 25, "email@email.com");
+        x.addEntry("Iilan", "Oglander", "Test", "25032152134", 25, "email@email.com");
+        x.addEntry("Hilan", "Oglander", "Test", "25032152134", 25, "email@email.com");
         x.addEntry("Zedger", "Smith", "", "", 0, "");
         x.sortByFName();
+        System.out.println(x.firstNode.getFName());
     }
 }
