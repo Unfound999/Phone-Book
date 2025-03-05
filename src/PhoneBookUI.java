@@ -1,8 +1,4 @@
 //  ASCII art created from https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=
-/*
- *  Add interaction between test class and manager class 
- *  Add comments where need be & more proper code formatting
-*/
 
 import java.util.Scanner;
 
