@@ -1,10 +1,18 @@
 //  ASCII art created from https://patorjk.com/software/taag/#p=display&f=3D%20Diagonal&t=
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PhoneBookUI {
+
+    PhoneBookManager manager;
+
+   // public PhoneBookUI() {
+   //     this.manager = new PhoneBookManager();
+   // }
+
     //  Prompts user with main menu and runs methods based on user input
-    public static void mainMenu() {
+    public void mainMenu() {
         Scanner userInput = new Scanner(System.in);
         String menuInput;
         boolean menuFlag = true;
@@ -39,14 +47,14 @@ public class PhoneBookUI {
     } //  end of mainMenu method
 
     //  calls method from Manager class to obtain list of  entry names and phone numbers and prints them to user
-    public static void viewAllEntries() {
+    public void viewAllEntries() {
         Scanner userInput = new Scanner(System.in);
         String menuInput;
         String entryNames;
         boolean menuFlag = true;
         char menuOption;
 
-        entryNames = getAllNames();
+        entryNames = manager.getAllNames();
         Scanner names = new Scanner(entryNames);
 
         printLine(); //  prints solid line for user readability
@@ -77,10 +85,9 @@ public class PhoneBookUI {
     } //  end of viewAllEntries method
 
     //  checks if an entry exists based on user inputted data and if it does exist, print entry's information to user
-    public static void viewOneEntry() {
+    public void viewOneEntry() {
         Scanner userInput = new Scanner(System.in);
         String entryFName, entryLName, phoneNum;
-        boolean nameFlag = false;
         boolean menuFlag = true;
         EntryNode entry;
 
@@ -106,11 +113,12 @@ public class PhoneBookUI {
                     if (phoneNum.toLowerCase().matches("quit")) {
                         menuFlag = false;
                     } else {
-                        entry = getEntry(entryFName, entryLName, phoneNum);
+                        entry = manager.getEntry(entryFName, entryLName, phoneNum);
                         if (entry == null) {
                             System.out.println("That user does not exist, please try again\n\n");
                         } else {
                             menuFlag = false;
+                            System.out.println();
                             System.out.println(entry);
                         }
                     }
@@ -121,10 +129,12 @@ public class PhoneBookUI {
     } //  end of viewOneEntry method
 
     //  prompts user for all data needed to create an entry and calls a Manager class method that creates entry with inputted data
-    public static void addNewEntry() {
+    public void addNewEntry() {
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
+        int zipCode = 0;
         boolean nameFlag = false;
+        boolean zipCheck = false;
         EntryNode entry;
 
         printLine(); //  prints solid line for user readability
@@ -141,19 +151,34 @@ public class PhoneBookUI {
         System.out.print("Please enter the entry's phone number: ");
         String phoneNum = userInput.next();
 
-        System.out.print("Please enter the entry's zipcode: ");
-        String zipCode = userInput.next();
+        //  try-catch ensures that the user inputts 
+        do {
+            System.out.print("Please enter the entry's zipcode: ");
+            try {
+                zipCode = userInput.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("You inputted a non-integer, please enter only integers for the zipcode [0-9]");
+                userInput.next();
+            }
+            zipCheck = true;
+        } while (!zipCheck);
 
         System.out.print("Please enter the entry's email address: ");
         String email = userInput.next();
 
-        entry = getEntry(entryFName, entryLName, phoneNum);
+        //  if manager variable is empty, prompt user to create a new entry
+        if (manager == null) {
+            this.manager = new PhoneBookManager(entryFName, entryLName, address, phoneNum, zipCode, email);
+            return;
+        }
+
+        entry = manager.getEntry(entryFName, entryLName, phoneNum);
 
         //  if entry already exists, state so to user, but if entry does not exist, call Manager class method to create entry
-        if (nameFlag) {
+        if (entry != null) {
             System.out.println("User already exists");
         } else {
-            addEntry(entryFName, entryLName, address, phoneNum, zipCode, email);
+            manager.addEntry(entryFName, entryLName, address, phoneNum, zipCode, email);
             System.out.println("User successfully created");
         }
 
@@ -161,7 +186,7 @@ public class PhoneBookUI {
     } //  end of addNewEntry method
 
     //  checks if an entry exists based on user inputted data and if it does exist, call Manager method to remove entry
-    public static void removeOneEntry() {
+    public void removeOneEntry() {
         Scanner userInput = new Scanner(System.in);
         String entryFName, entryLName, phoneNum;
         boolean nameFlag = false;
@@ -190,11 +215,11 @@ public class PhoneBookUI {
                     if (phoneNum.toLowerCase().matches("quit")) {
                         menuFlag = false;
                     } else {
-                        entry  = getEntry(entryFName, entryLName, phoneNum);
+                        entry = manager.getEntry(entryFName, entryLName, phoneNum);
                         if (entry == null) {
                             System.out.println("That user does not exist, please try again\n\n");
                         } else {
-                            removeEntry(entryFName, entryLName, phoneNum);
+                            manager.remove(entryFName, entryLName, phoneNum);
                             System.out.println("User removed successfully");
                             menuFlag = false;
                         }
@@ -206,7 +231,7 @@ public class PhoneBookUI {
     } //  end of removeOneEntry method
 
     //  Prints ASCIIArt in main menu
-    public static void ASCIIArt() {
+    public void ASCIIArt() {
         System.out.println("                                                                                                                \r\n" + 
                         "                                                                                                                \r\n" + 
                         "                        ,--,    ,--,                                      ,---,.                           ,-.  \r\n" + 
@@ -226,7 +251,7 @@ public class PhoneBookUI {
     } //  end of ASCIIArt method
 
     //  prints a solid line to seperate different menus to improve User Interface
-    public static void printLine() {
+    public void printLine() {
         System.out.println("\n\n***********************************************************************************");
     } //  end of printLine method
 } //  end of PhoneBookUI class
