@@ -46,8 +46,8 @@ public class PhoneBookManager {
 
         EntryNode currNode = firstNode;
 
-        String currFName = currNode.getfName();
-        String currLName = currNode.getlName();
+        String currFName = currNode.getFName();
+        String currLName = currNode.getLName();
         String currPNumber = currNode.getPhoneNumber();
 
         if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
@@ -57,8 +57,8 @@ public class PhoneBookManager {
         currNode = currNode.getNextEntry();
 
         while(currNode.getNextEntry() !=  null) {
-            currFName = currNode.getNextEntry().getfName();
-            currLName = currNode.getNextEntry().getlName();
+            currFName = currNode.getNextEntry().getFName();
+            currLName = currNode.getNextEntry().getLName();
             currPNumber = currNode.getNextEntry().getPhoneNumber();
 
             if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
@@ -75,8 +75,8 @@ public class PhoneBookManager {
         String longList = "";
 
         while(currNode !=  null) {
-            String currFName = currNode.getfName();
-            String currLName = currNode.getlName();
+            String currFName = currNode.getFName();
+            String currLName = currNode.getLName();
             String currPNumber = currNode.getPhoneNumber();
 
             longList = longList + currFName + " " + currLName + " " + currPNumber + " ";
@@ -89,8 +89,8 @@ public class PhoneBookManager {
 
         EntryNode currNode = firstNode;
 
-        String currFName = currNode.getfName();
-        String currLName = currNode.getlName();
+        String currFName = currNode.getFName();
+        String currLName = currNode.getLName();
         String currPNumber = currNode.getPhoneNumber();
 
         if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
@@ -100,8 +100,8 @@ public class PhoneBookManager {
         currNode = currNode.getNextEntry();
 
         while(currNode.getNextEntry() !=  null) {
-            currFName = currNode.getNextEntry().getfName();
-            currLName = currNode.getNextEntry().getlName();
+            currFName = currNode.getNextEntry().getFName();
+            currLName = currNode.getNextEntry().getLName();
             currPNumber = currNode.getNextEntry().getPhoneNumber();
 
             if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
