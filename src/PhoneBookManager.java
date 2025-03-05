@@ -67,13 +67,13 @@ public class PhoneBookManager {
         }
 
         //Carry out operations to check for our node in question, then return the node in question.
-        while(currNode.getNextEntry() !=  null) {
-            currFName = currNode.getNextEntry().getFName();
-            currLName = currNode.getNextEntry().getLName();
-            currPNumber = currNode.getNextEntry().getPhoneNumber();
+        while(currNode !=  null) {
+            currFName = currNode.getFName();
+            currLName = currNode.getLName();
+            currPNumber = currNode.getPhoneNumber();
 
             if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
-                return currNode.getNextEntry();
+                return currNode;
             }
             currNode = currNode.getNextEntry();
         }
