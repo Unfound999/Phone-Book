@@ -133,8 +133,6 @@ public class PhoneBookUI {
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
         int zipCode = 0;
-        boolean nameFlag = false;
-        boolean zipCheck = false;
         EntryNode entry;
 
         printLine(); //  prints solid line for user readability
@@ -160,8 +158,7 @@ public class PhoneBookUI {
                 System.out.println("You inputted a non-integer, please enter only integers for the zipcode [0-9]");
                 userInput.next();
             }
-            zipCheck = true;
-        } while (!zipCheck);
+        } while (zipCode == 0);
 
         System.out.print("Please enter the entry's email address: ");
         String email = userInput.next();
@@ -189,7 +186,6 @@ public class PhoneBookUI {
     public void removeOneEntry() {
         Scanner userInput = new Scanner(System.in);
         String entryFName, entryLName, phoneNum;
-        boolean nameFlag = false;
         boolean menuFlag = true;
         EntryNode entry;
 
