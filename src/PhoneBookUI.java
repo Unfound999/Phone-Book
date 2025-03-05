@@ -124,7 +124,7 @@ public class PhoneBookUI {
                     } else {
                         entry = manager.getEntry(entryFName, entryLName, phoneNum);
                         if (entry == null) {
-                            System.out.println("That user does not exist, please try again\n\n");
+                            System.out.println("That entry does not exist, please try again\n\n");
                         } else {
                             menuFlag = false;
                             System.out.println();
@@ -142,8 +142,6 @@ public class PhoneBookUI {
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
         int zipCode = 0;
-        boolean nameFlag = false;
-        boolean zipCheck = false;
         EntryNode entry;
 
         printLine(); //  prints solid line for user readability
@@ -169,8 +167,7 @@ public class PhoneBookUI {
                 System.out.println("You inputted a non-integer, please enter only integers for the zipcode [0-9]");
                 userInput.next();
             }
-            zipCheck = true;
-        } while (!zipCheck);
+        } while (zipCode == 0);
 
         System.out.print("Please enter the entry's email address: ");
         String email = userInput.next();
@@ -185,10 +182,10 @@ public class PhoneBookUI {
 
         //  if entry already exists, state so to user, but if entry does not exist, call Manager class method to create entry
         if (entry != null) {
-            System.out.println("User already exists");
+            System.out.println("Entry already exists");
         } else {
             manager.addEntry(entryFName, entryLName, address, phoneNum, zipCode, email);
-            System.out.println("User successfully created");
+            System.out.println("Entry successfully created");
         }
 
         System.out.println("\n\n"); //  println for user readability
@@ -198,7 +195,6 @@ public class PhoneBookUI {
     public void removeOneEntry() {
         Scanner userInput = new Scanner(System.in);
         String entryFName, entryLName, phoneNum;
-        boolean nameFlag = false;
         boolean menuFlag = true;
         EntryNode entry;
 
@@ -231,10 +227,10 @@ public class PhoneBookUI {
                     } else {
                         entry = manager.getEntry(entryFName, entryLName, phoneNum);
                         if (entry == null) {
-                            System.out.println("That user does not exist, please try again\n\n");
+                            System.out.println("That entry does not exist, please try again\n\n");
                         } else {
                             manager.remove(entryFName, entryLName, phoneNum);
-                            System.out.println("User removed successfully");
+                            System.out.println("Entry removed successfully");
                             menuFlag = false;
                         }
                     }
