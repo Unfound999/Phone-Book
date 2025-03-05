@@ -124,7 +124,7 @@ public class PhoneBookUI {
                     } else {
                         entry = manager.getEntry(entryFName, entryLName, phoneNum);
                         if (entry == null) {
-                            System.out.println("That user does not exist, please try again\n\n");
+                            System.out.println("That entry does not exist, please try again\n\n");
                         } else {
                             menuFlag = false;
                             System.out.println();
@@ -182,10 +182,10 @@ public class PhoneBookUI {
 
         //  if entry already exists, state so to user, but if entry does not exist, call Manager class method to create entry
         if (entry != null) {
-            System.out.println("User already exists");
+            System.out.println("Entry already exists");
         } else {
             manager.addEntry(entryFName, entryLName, address, phoneNum, zipCode, email);
-            System.out.println("User successfully created");
+            System.out.println("Entry successfully created");
         }
 
         System.out.println("\n\n"); //  println for user readability
@@ -227,10 +227,10 @@ public class PhoneBookUI {
                     } else {
                         entry = manager.getEntry(entryFName, entryLName, phoneNum);
                         if (entry == null) {
-                            System.out.println("That user does not exist, please try again\n\n");
+                            System.out.println("That entry does not exist, please try again\n\n");
                         } else {
                             manager.remove(entryFName, entryLName, phoneNum);
-                            System.out.println("User removed successfully");
+                            System.out.println("Entry removed successfully");
                             menuFlag = false;
                         }
                     }
