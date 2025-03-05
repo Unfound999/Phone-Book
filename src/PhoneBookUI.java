@@ -54,7 +54,7 @@ public class PhoneBookUI {
         
         //  grabs names and phonenumbers from String and prints them to user
         while (names.hasNext()) {
-            System.out.print(names.next() + " " + names.next() + " " + names.next());
+            System.out.println(names.next() + " " + names.next() + " " + names.next());
         }
 
         //  prompts user and either runs methods or quits back to main menu based on user input
