@@ -84,7 +84,7 @@ public class PhoneBookUI {
         String entryFName, entryLName, phoneNum;
         boolean nameFlag = false;
         boolean menuFlag = true;
-        //  EntryNode entry = new EntryNode;
+        EntryNode entry = new EntryNode();
 
         printLine(); // prints solid line for user readability
 
@@ -108,15 +108,12 @@ public class PhoneBookUI {
                     if (phoneNum.toLowerCase().matches("quit")) {
                         menuFlag = false;
                     } else {
-                        // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
-                        if (nameFlag == false) {
+                        entry = getEntry(entryFName, entryLName, phoneNum);
+                        if (entry == null) {
                             System.out.println("That user does not exist, please try again\n\n");
                         } else {
-                            System.out.println("User removed successfully");
                             menuFlag = false;
-                            //  entry = {Method that takes in entry name and returns an object}
-                            //  System.out.println(entry); {prints out data in entry object by implicitly calling custom made toString method}
-                            System.out.println("User successfully removed");
+                            System.out.println(entry);
                         }
                     }
                 }
@@ -130,6 +127,7 @@ public class PhoneBookUI {
         Scanner userInput = new Scanner(System.in);
         Scanner addressInput = new Scanner(System.in);
         boolean nameFlag = false;
+        EntryNode entry = new EntryNode();
 
         printLine(); //  prints solid line for user readability
 
@@ -151,8 +149,7 @@ public class PhoneBookUI {
         System.out.print("Please enter the entry's email address: ");
         String email = userInput.next();
 
-        //  checks if entry already exists
-        // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
+        entry = getEntry(entryFName, entryLName, phoneNum);
 
         //  if entry already exists, state so to user, but if entry does not exist, call Manager class method to create entry
         if (nameFlag) {
@@ -168,9 +165,10 @@ public class PhoneBookUI {
     //  checks if an entry exists based on user inputted data and if it does exist, call Manager method to remove entry
     public static void removeOneEntry() {
         Scanner userInput = new Scanner(System.in);
-        String entryFName, entryLName, phoneNumber;
+        String entryFName, entryLName, phoneNum;
         boolean nameFlag = false;
         boolean menuFlag = true;
+        EntryNode entry = new EntryNode();
 
         printLine(); //  prints a solid line for user readability
 
@@ -190,12 +188,12 @@ public class PhoneBookUI {
                     menuFlag = false;
                 } else {
                     System.out.print("Please enter the phone number of the entry you would like to remove or type \"quit\": ");
-                    phoneNumber = userInput.next();
-                    if (phoneNumber.toLowerCase().matches("quit")) {
+                    phoneNum = userInput.next();
+                    if (phoneNum.toLowerCase().matches("quit")) {
                         menuFlag = false;
                     } else {
-                        // nameFlag = {method}; {Call method from manager class that checks if an object with that name exists in linkedlist}
-                        if (nameFlag == false) {
+                        entry  = getEntry(entryFName, entryLName, phoneNum);
+                        if (entry == null) {
                             System.out.println("That user does not exist, please try again\n\n");
                         } else {
                             //  {calls method from manager class that removes user from linkedlist}
