@@ -5,16 +5,6 @@ public class PhoneBookManager {
     private EntryNode firstNode;
     private int length;
 
-    private int rawItemCount(){
-        int i = 0;
-        EntryNode currItem = firstNode;
-        while(currItem != null){
-            i++;
-            currItem = currItem.getNextEntry();
-        }
-        return i; 
-    }
-
     //This method handles adding an entry to the end of the node.
     public void addEntry(String fNAme, String lName, String address, String phNum, int zip, String email) {
 
