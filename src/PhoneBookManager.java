@@ -9,13 +9,17 @@ public class PhoneBookManager {
     public void addEntry(String fNAme, String lName, String address, String phNum, int zip, String email) {
 
         EntryNode currNode = firstNode;
-        while(currNode.getNextEntry() !=  null) {
+        if (currNode != null) {
+            while(currNode.getNextEntry() !=  null) {
 
-            currNode = currNode.getNextEntry();
+                currNode = currNode.getNextEntry();
+            }
+            EntryNode newEntryNode = new EntryNode(this.length++, fNAme, lName, address, phNum, zip, email);
+            currNode.setNextEntry(newEntryNode);
+        } else {
+            EntryNode newEntryNode = new EntryNode(this.length++, fNAme, lName, address, phNum, zip, email);
+            firstNode = newEntryNode;
         }
-
-        EntryNode newEntryNode = new EntryNode(this.length++, fNAme, lName, address, phNum, zip, email);
-        currNode.setNextEntry(newEntryNode);
 
     }
 
