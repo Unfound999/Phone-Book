@@ -120,18 +120,27 @@ public class PhoneBookManager {
             return;
         }
 
+        int removeNodeIndex = Integer.MAX_VALUE; // Initialize it with an impossibly high integer. If it's larger than this, something has either gone very wrong, or extremely right.
 
+
+        EntryNode prevNode = currNode;
         currNode = currNode.getNextEntry();
-
-        while(currNode.getNextEntry() !=  null) {
-            currFName = currNode.getNextEntry().getFName();
-            currLName = currNode.getNextEntry().getLName();
-            currPNumber = currNode.getNextEntry().getPhoneNumber();
-
-            if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
-                currNode.setNextEntry(currNode.getNextEntry().getNextEntry());
-                break;
+        while(currNode !=  null) {
+            if(currNode.getIndex() > removeNodeIndex){
+                currNode.setIndex(currNode.getIndex()-1);
             }
+
+            currFName = currNode.getFName();
+            currLName = currNode.getLName();
+            currPNumber = currNode.getPhoneNumber();
+            if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)){
+                prevNode.setNextEntry(currNode.getNextEntry());
+                if(currNode.getNextEntry() != null){
+                    currNode.getNextEntry().setIndex(currNode.getIndex());
+                }
+                removeNodeIndex = currNode.getIndex();
+            }
+            prevNode = currNode;
             currNode = currNode.getNextEntry();
         }
     }
