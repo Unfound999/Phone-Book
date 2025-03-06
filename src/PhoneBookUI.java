@@ -26,6 +26,7 @@ public class PhoneBookUI {
                             "(v) View one specific entry in phone book\n" +
                             "(A) Add a new entry in the phone book\n" +
                             "(r) Remove an entry from the phone book\n" +
+                            "(s) Sort by first name\n" +
                             "(q) Quit the program\n");
             menuInput = userInput.next();
             menuOption = menuInput.toLowerCase().charAt(0);
@@ -37,6 +38,7 @@ public class PhoneBookUI {
                     case('v'): viewOneEntry(); break;
                     case('a'): addNewEntry(); break;
                     case('r'): removeOneEntry(); break;
+                    case('s'): manager.sortByFName(); break;
                     case('q'): System.out.println("Program Ends"); menuFlag = false; break;
                 }
             } else {
