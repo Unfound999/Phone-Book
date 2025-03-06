@@ -50,6 +50,10 @@ public class PhoneBookManager {
 
         EntryNode currNode = firstNode;
 
+        if(currNode == null){
+            return null;
+        }
+
         String currFName = currNode.getFName();
         String currLName = currNode.getLName();
         String currPNumber = currNode.getPhoneNumber();
@@ -109,7 +113,9 @@ public class PhoneBookManager {
 
         if(currFName.equals(fName) && currLName.equals(lName) && currPNumber.equals(pNumber)) {
             firstNode = currNode.getNextEntry();
+            return;
         }
+
 
         currNode = currNode.getNextEntry();
 
@@ -131,39 +137,5 @@ public class PhoneBookManager {
 
         this.length = 0;
         this.firstNode = new EntryNode(this.length++, fNAme, lName, address, phNum, zip, email);
-    }
-
-    public void sortByFName(){
-        String charMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        EntryNode prevNode = null;
-        EntryNode currNode = firstNode;
-        
-        if(currNode.getNextEntry() == null){
-            return; // Only one entry, always sorted by that virtue.
-        }
-
-        while(currNode != null){
-            char currFNameChar = currNode.getFName().toUpperCase().charAt(0);
-            char nextFNameChar = currNode.getNextEntry().getFName().charAt(0);
-            if(charMap.indexOf(currFNameChar) > charMap.indexOf(nextFNameChar)){
-                if(prevNode == null){
-                    // We must be at the first node.
-                    EntryNode nextNode = currNode.getNextEntry();
-                    nextNode.setNextEntry(currNode);
-                    firstNode = nextNode;
-                } else {
-                    prevNode.setNextEntry(currNode.getNextEntry());
-                    currNode.getNextEntry().setNextEntry(currNode);
-                }
-            }
-            prevNode = currNode;
-            currNode = currNode.getNextEntry();
-        }
-    }
-
-    public static void main(String[] args) {
-        PhoneBookManager x = new PhoneBookManager("Bob", "Fred", "null", "null", 0, "null");
-        x.addEntry("Anna", "Frank", "null", "null", 0, "null");
-        x.addEntry("Zedger", "Smith", "", "", 0, "");
     }
 }
