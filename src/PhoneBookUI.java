@@ -10,6 +10,19 @@ public class PhoneBookUI {
    public PhoneBookUI() {
    }
 
+   /*
+    * void Method
+    * Super simple method, handles the case of our manager is not initialized before calling sort on it.
+    * returns early with message if it's not initialized, otherwise we sort.
+    */
+   public void sort(){
+    if(this.manager == null){
+        System.out.println("Please add a contact first!");
+        return;
+    }
+    manager.sortByFName();
+   }
+
     //  Prompts user with main menu and runs methods based on user input
     public void mainMenu() {
         Scanner userInput = new Scanner(System.in);
@@ -32,13 +45,13 @@ public class PhoneBookUI {
             menuOption = menuInput.toLowerCase().charAt(0);
 
             //  calls methods based on user input & ensuring that the input is valid
-            if (Character.toString(menuOption).matches("[evarq]")) {
+            if (Character.toString(menuOption).matches("[evarsq]")) {
                 switch(menuOption) {
                     case('e'): viewAllEntries(); break;
                     case('v'): viewOneEntry(); break;
                     case('a'): addNewEntry(); break;
                     case('r'): removeOneEntry(); break;
-                    case('s'): manager.sortByFName(); break;
+                    case('s'): sort(); break;
                     case('q'): System.out.println("Program Ends"); menuFlag = false; break;
                 }
             } else {
