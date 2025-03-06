@@ -52,7 +52,7 @@ public class PhoneBookUI {
                     case('a'): addNewEntry(); break;
                     case('r'): removeOneEntry(); break;
                     case('s'): sort(); break;
-                    case('q'): System.out.println("Program Ends"); menuFlag = false; break;
+                    case('q'): System.out.println("Adios!"); menuFlag = false; break;
                 }
             } else {
                 System.out.println("Invalid input, please try again");
